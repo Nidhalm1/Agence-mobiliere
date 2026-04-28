@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏡 Agence Immobilière – Formulaire de Contact
 
-## Getting Started
+Application fullstack développée avec **Next.js, Tailwind CSS et Prisma** permettant de contacter une agence immobilière, avec gestion des disponibilités et stockage des messages en base de données.
 
-First, run the development server:
+---
+
+##  Fonctionnalités
+
+* Formulaire de contact complet
+* Sélection civilité (Mme / M)
+* Choix du type de demande :
+    * Demande de visite
+    * Être rappelé
+    * Plus de photos
+* Ajout dynamique de disponibilités
+* Message personnalisé
+* Feedback utilisateur (toast succès / erreur)
+* Sauvegarde en base de données (Prisma + SQLite)
+
+---
+
+## 🛠️ Stack technique
+
+* **Next.js (App Router)**
+* **React**
+* **Tailwind CSS**
+* **Prisma ORM**
+* **SQLite**
+* **react-hot-toast**
+
+---
+
+## 📁 Installation
+
+### 1. Cloner le projet
+
+```bash
+git clone <ton-repo>
+cd agence-form
+```
+
+---
+
+### 2. Installer les dépendances
+
+```bash
+npm install
+```
+
+---
+
+### 3. Configurer la base de données
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+---
+
+### 4. Lancer le projet
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 Ouvrir : http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗄️ Accéder aux données
 
-## Learn More
+### Interface Prisma
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx prisma studio
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👉 Ouvrir : http://localhost:5555
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📡 API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### POST `/api/contact`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Permet d’envoyer un message
+
+#### Exemple de payload :
+
+```json
+{
+  "civility": "M",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@email.com",
+  "phone": "0600000000",
+  "message": "Je suis intéressé par le bien",
+  "subject": "Demande de visite",
+  "disponibilites": ["Lundi à 10h", "Mardi à 14h"]
+}
+```
+
+---
+
+### GET `/api/contact`
+
+Récupère tous les messages enregistrés
+
+---
+
+## 🎨 UI
+
+* Design inspiré d’une maquette immobilière
+* Effet glassmorphism (blur + transparence)
+* Responsive
+* Expérience utilisateur fluide
+
+---
+
+## ⚠️ Notes
+
+* Prisma peut nécessiter un redémarrage si erreur Windows (EPERM)
+* Utiliser `taskkill /F /IM node.exe` si blocage
+
+---
+
+## 📌 Améliorations possibles
+
+* Validation des champs (Zod)
+* Authentification admin
+* Dashboard de gestion des contacts
+* Stockage avancé des disponibilités (PostgreSQL)
+
+---
+
+## 👨‍💻 Auteur
+
+Projet réalisé dans le cadre d’un test technique / entraînement fullstack.
+
+---
