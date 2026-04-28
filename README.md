@@ -35,7 +35,7 @@ Application fullstack développée avec **Next.js, Tailwind CSS et Prisma** perm
 ### 1. Cloner le projet
 
 ```bash
-git clone <ton-repo>
+git clone https://github.com/Nidhalm1/Agence-mobiliere.git
 cd agence-form
 ```
 
